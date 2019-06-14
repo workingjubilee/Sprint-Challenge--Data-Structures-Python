@@ -20,7 +20,7 @@ for name_1 in names_1:
         if name_1 == name_2:
             duplicates.append(name_1)
 '''
-'''
+
 # My Fast Solution:
 f = open('names_1.txt', 'r')
 
@@ -43,8 +43,9 @@ f.close() # I think we have to read this too...
 for name in names_2:
     if suspected_doppelgangers.get(name):
         duplicates.append(name)
-'''
 
+
+'''
 # Memory Constrained Solution:
 
 f = open('names_1.txt', 'r')
@@ -72,6 +73,7 @@ while True:
             k += 1
     except IndexError:
         break
+'''
 
 end_time = time.time()
 print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
