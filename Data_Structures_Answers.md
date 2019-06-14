@@ -6,7 +6,7 @@ O(1).
 
 2. What is the space complexity of your ring buffer's `append` function?
 
-O(1). Unless you are counting the bits allocated through appending itself, which you might be, in which case I suppose it would be technically O(n), but within such a tiny range of n, and you've already allocated it, that who cares? There is no real additional space cost to store the reference.
+O(1). Unless you are counting the bits allocated through appending itself, which you might be, in which case I suppose it would be technically O(n), but within such a tiny range of n, and you've probably already allocated it, that who cares? There is no real additional space cost to store the reference.
 
 3. What is the runtime complexity of your ring buffer's `get` method?
 
@@ -21,6 +21,8 @@ O(n) because it temporarily allocates a new list to use for purging None entries
 
 O(n * n') because it iterates over the entire second list for every instance in the first list. Though it's kind of weird to call it n^2, I believe it's correct nonetheless, because n implies it's a single variable, whereas there are "two" n's here.
 
+Nonetheless that's why the "second part" of n is designated by n'.
+
 6. What is the space complexity of the provided code in `names.py`?
 
 O(n), because it just reads out two lists.
@@ -29,6 +31,10 @@ O(n), because it just reads out two lists.
 
 O(n). After reading in the lists, I iterate over both lists once.
 
+ADDED AFTER FURTHER OPT: I don't seem to have gained actual clock speed.
+
 8. What is the space complexity of your optimized code in `names.py`?
 
 O(1.5n) because I do allocate an additional dictionary for half of it. I am going to try to see if I can optimize away that problem and read it initially into a dictionary.
+
+ADDED AFTER FURTHER OPT: Ha, got it. Closer to O(n), though I should note the methods return an iterator so it's slightly bigger than O(n) in terms of the cosntant.

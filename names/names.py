@@ -3,7 +3,17 @@ import time
 start_time = time.time() # Leave the timer,
 
 f = open('names_1.txt', 'r')
-names_1 = f.read().split("\n")  # List containing 10000 names
+'''
+Does this seem faster? 'cause it's not!
+suspected_doppelgangers = {}
+while True:
+    name = f.readline().rstrip()
+    suspected_doppelgangers[name] = True
+    if name == '':
+        break
+'''
+# Actually faster:
+suspected_doppelgangers = { n: True for n in f.read().split("\n") }
 f.close() # I think we have to read this.
 
 f = open('names_2.txt', 'r')
@@ -20,7 +30,7 @@ for name_1 in names_1:
             duplicates.append(name_1)
 '''
 
-suspected_doppelgangers = { n: True for n in names_1 }
+# suspected_doppelgangers = { n: True for n in names_1 }
 for name in names_2:
     if suspected_doppelgangers.get(name):
         duplicates.append(name)
